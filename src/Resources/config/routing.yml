@@ -1,0 +1,6 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+minimal_security:
+    resource: '@MinimalSecurityBundle/Controller'
+    type: minimal_annotation

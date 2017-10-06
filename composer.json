@@ -1,0 +1,20 @@
+{
+    "name": "minimaloriginal/security-bundle",
+    "description" : "The security bundle for Minimal",
+    "type" : "symfony-bundle",
+    "keywords" : [
+        "security bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php": ">=5.5.9",
+        "symfony/symfony": "3.3.*",
+        "friendsofsymfony/user-bundle": "~2.0",
+        "minimaloriginal/core-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "MinimalOriginal\\SecurityBundle\\": "src/" }
+    }
+}

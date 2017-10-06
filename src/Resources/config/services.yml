@@ -1,0 +1,5 @@
+services:
+  minimal_manager.module.security:
+      class: MinimalOriginal\SecurityBundle\MinimalModule
+      arguments: ["@fos_user.user_manager"]
+      tags: [minimal_manager.module]
