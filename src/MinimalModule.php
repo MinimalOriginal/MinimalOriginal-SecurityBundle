@@ -3,13 +3,14 @@
 namespace MinimalOriginal\SecurityBundle;
 
 use MinimalOriginal\CoreBundle\Modules\ManageableModuleInterface;
+use MinimalOriginal\CoreBundle\Modules\AbstractModule;
 
 use FOS\UserBundle\Model\UserManagerInterface;
 
 use MinimalOriginal\SecurityBundle\Form\UserType;
 use MinimalOriginal\SecurityBundle\Entity\User;
 
-class MinimalModule implements ManageableModuleInterface{
+class MinimalModule extends AbstractModule implements ManageableModuleInterface{
 
   protected $userManager;
 
@@ -20,27 +21,18 @@ class MinimalModule implements ManageableModuleInterface{
   **/
   public function __construct(UserManagerInterface $userManager){
     $this->userManager = $userManager;
+    parent::__construct();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getName(){
-    return 'security';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getTitle(){
-    return "Sécurité";
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getDescription(){
-    return "Créez ou modifiez les utilisateurs de votre site.";
+  public function init(){
+    $this->informations->set('name', 'security');
+    $this->informations->set('title', 'Sécurité');
+    $this->informations->set('description', "Créez ou modifiez les utilisateurs de votre site.");
+    $this->informations->set('icon', "ion-ios-locked-outline");
+    return $this;
   }
 
   /**
@@ -67,6 +59,13 @@ class MinimalModule implements ManageableModuleInterface{
 
   public function removeModel($model, $andFlush = true){
     $this->userManager->deleteUser($model);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getParent(){
+    return null;
   }
 
 }
